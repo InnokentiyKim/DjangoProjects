@@ -8,4 +8,5 @@ __pycache__/
 .vscode
 *.env
 *.ini
+*.DS_Store
 
