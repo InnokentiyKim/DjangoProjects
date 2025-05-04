@@ -4,7 +4,7 @@ from .models import Order
 
 
 @shared_task
-def order_create(order_id):
+def order_created(order_id):
     order = Order.objects.get(id=order_id)
     subject = f"Order nr. {order.id}"
     message = f"Dear {order.first_name},\n\n" \
