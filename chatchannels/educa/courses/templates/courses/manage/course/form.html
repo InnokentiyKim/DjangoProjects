@@ -19,7 +19,7 @@
     <div class="module">
         <h2>Course info</h2>
         <form method="post">
-            csrf_token
+            {% csrf_token %}
             {{ form.as_p }}
             <p><input type="submit" value="Save course"></p>
         </form>
