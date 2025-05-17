@@ -8,6 +8,20 @@ from .forms import ModuleFormSet
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic.base import TemplateResponseMixin, View
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
+
+
+class ModuleOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View):
+    def post(self, request):
+        for id, order in self.request_json.items():
+            Module.objects.filter(id=id, course__owner=request.user).update(order=order)
+        return self.render_json_response({'saved': 'OK'})
+
+class ContentOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View):
+    def post(self, request):
+        for id, order in self.request_json.items():
+            Content.objects.filter(id=id, course__owner=request.user).update(order=order)
+        return self.render_json_response({'saved': 'OK'})
 
 
 class ContentCreateUpdateView(TemplateResponseMixin, View):
