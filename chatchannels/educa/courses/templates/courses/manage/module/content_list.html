@@ -79,13 +79,10 @@
 {% endblock %}
 
 {% block domready %}
-    const csrfToken = '{{ csrf_token }}';
     var options = {
     method: 'POST',
-    mode: 'same-origin'
-    };
+    mode: 'same-origin'};
     const moduleOrderUrl = '{% url "module_order" %}';
-
     sortable('#modules', {
         forcePlaceholderSize: true,
         placeholderClass: 'placeholder'
