@@ -76,6 +76,8 @@ TEMPLATES = [
     },
 ]
 
+ASGI_APPLICATION = 'educa.routing.application'
+
 WSGI_APPLICATION = 'educa.wsgi.application'
 
 
