@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'students.apps.StudentsConfig',
     'embed_video',
-    'chat',
     'channels',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -76,9 +76,15 @@ TEMPLATES = [
     },
 ]
 
-ASGI_APPLICATION = 'educa.routing.application'
+ASGI_APPLICATION = 'educa.asgi:application'
 
-WSGI_APPLICATION = 'educa.wsgi.application'
+# WSGI_APPLICATION = 'educa.wsgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    }
+}
 
 
 # Database
